@@ -1,1 +1,0 @@
-[2016-02-25 08:13:22] php.DEBUG: fsockopen(): unable to connect to 127.0.0.1:8000 (No connection could be made because the target machine actively refused it. ) {"type":2,"file":"C:\\Users\\mklos\\OneDrive\\sem6\\internety\\projekt\\MobilePost\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle\\Command\\ServerCommand.php","line":59,"level":28928} []
