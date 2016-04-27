@@ -1,0 +1,7 @@
+postmen:
+    type:     rest
+    resource: AppBundle\Controller\PostmenController
+
+mobilepost:
+    type: annotation
+    resource: AppBundle\Controller\DefaultController
