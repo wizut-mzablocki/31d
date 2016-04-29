@@ -2,6 +2,10 @@ postmen:
     type:     rest
     resource: AppBundle\Controller\PostmenController
 
+parcel_order:
+    type: rest
+    resource: AppBundle\Controller\ParcelOrderController
+
 mobilepost:
     type: annotation
     resource: AppBundle\Controller\DefaultController
