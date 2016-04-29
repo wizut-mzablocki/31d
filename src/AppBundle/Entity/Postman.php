@@ -22,20 +22,6 @@ class Postman extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-    protected $name;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=11)
@@ -58,30 +44,6 @@ class Postman extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Postman
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
