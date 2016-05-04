@@ -91,7 +91,6 @@ class AddressData
     public function setFirstName($firstName)
     {
         $this->first_name = $firstName;
-
         return $this;
     }
 
