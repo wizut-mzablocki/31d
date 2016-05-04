@@ -55,7 +55,6 @@ class ParcelOrder implements ParcelOrderInterface
      */
     private $tracking;
 
-
     public function getHashCode()
     {
         return $this->hash_code;

@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Model;
 
 Interface ParcelOrderInterface

@@ -433,6 +433,7 @@ class SymfonyRequirements extends RequirementCollection
             );
         }
 
+
         if (version_compare($installedPhpVersion, self::REQUIRED_PHP_VERSION, '>=')) {
             $timezones = array();
             foreach (DateTimeZone::listAbbreviations() as $abbreviations) {

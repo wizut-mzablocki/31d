@@ -28,7 +28,8 @@ class ParcelType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Parcel'
+            'data_class' => 'AppBundle\Entity\Parcel', 
+            'csrf_protection' => false
         ));
     }
 }

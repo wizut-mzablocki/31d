@@ -55,7 +55,8 @@ class PostmanType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Postman'
+            'data_class' => 'AppBundle\Entity\Postman', 
+            'csrf_protection' => false
         ));
     }
 }
