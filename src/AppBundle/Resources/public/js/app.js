@@ -17,6 +17,8 @@ app.config(['$httpProvider',
 		delete $httpProvider.defaults.headers.common['X-Request-With'];
 }]);
 */
+
+
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
 		when('postmen/new', {
