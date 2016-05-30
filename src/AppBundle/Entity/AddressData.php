@@ -248,3 +248,4 @@ class AddressData
         return $this->email;
     }
 }
+

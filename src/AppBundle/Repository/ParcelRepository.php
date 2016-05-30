@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class ParcelRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function save(ParcelInterface $parcel) {
+		$em = $this->getEntityManager();
+        $em->persist($parcel);
+        $em->flush();
+    }
 }
