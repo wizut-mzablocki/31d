@@ -8,6 +8,8 @@ var app = angular.module('mobilePost', [
 	'mobilepostDirectives',
 	'ngRoute'
 	]);
+    
+var app = angular.module('postmanPanel', ['taskControllers', 'taskServices', 'ngRoute']);
 /*	
 app.config(['$httpProvider', 
 	function($httpProvider) {
@@ -29,8 +31,16 @@ app.config(['$routeProvider', function($routeProvider) {
 			templateUrl: '/bundles/app/partials/parcel-form.html', 
 			controller: 'UpdatePostmanlFormCtrl'
 		}).
-    	otherwise({
+    	when('postmen',{
 			templateUrl: '/bundles/app/partials/postman-list.html',
 			controller: 'PostmenListCtrl'
-		});
+		})
+        .when('/parcelorders', {
+            'templateUrl': '/bundles/app/partials/parcelorders.html',
+            'controller': 'ParcelordersCtrl'
+        })
+        otherwise({
+            'templateUrl': '/bundles/app/partials/task-list.html',
+            'controller': 'TaskListCtrl'
+        });
   }]);
