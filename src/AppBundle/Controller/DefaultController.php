@@ -16,5 +16,13 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('AppBundle:MobilePost:index.html.twig');
     }
+    
+    /**
+     * @Route("/postmanpanel", name="postman_panel")
+     */
+	public function postmanpanelAction()
+	{
+		return $this->render('AppBundle:MobilePost:index.html.twig');
+	}
 }
 

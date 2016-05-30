@@ -3,6 +3,7 @@
 /* Controllers */
 
 var parcelControllers = angular.module('mobilepostControllers', []);
+var taskControllers = angular.module('taskControllers', []);
 
 parcelControllers.controller('PostmanListCtrl', ['$scope', 'Postman',
  function($scope, Postman) {
@@ -38,3 +39,8 @@ parcelControllers.controller('UpdatePostmanFormCtrl', ['$scope', '$routeParams',
 		 }
 	 }
  }]);
+ 
+ taskControllers.controller('TaskListCtrl', ['$scope', 'Task',
+    function($scope, Task){
+        $scope.tasks = Task.query();
+    }]);
