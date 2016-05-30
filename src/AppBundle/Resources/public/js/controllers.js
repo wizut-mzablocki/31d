@@ -9,6 +9,7 @@ parcelControllers.controller('PostmanListCtrl', ['$scope', 'Postman',
 	$scope.postmen = Postman.query();
  }]);
 
+
 parcelControllers.controller('CreatePostmanFormCtrl', ['$scope', '$window', 'Parcel',
  function($scope, $window, Parcel) {
 	 $scope.submit = function() {

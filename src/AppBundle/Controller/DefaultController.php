@@ -17,3 +17,4 @@ class DefaultController extends Controller
         return $this->render('AppBundle:MobilePost:index.html.twig');
     }
 }
+
