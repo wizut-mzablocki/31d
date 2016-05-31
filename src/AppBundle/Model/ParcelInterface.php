@@ -3,9 +3,9 @@ namespace AppBundle\Model;
 
 Interface ParcelInterface
 {
-	public function getId();
-	public function setWeight($weight);
+	
+	public function setNotes($Notes);
+	public function getNotes();
+	public function setWeight($Weight);
 	public function getWeight();
-	public function setNote($note);
-	public function getNote();
 }
