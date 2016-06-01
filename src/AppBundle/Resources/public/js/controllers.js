@@ -10,6 +10,7 @@ parcelControllers.controller('PostmanListCtrl', ['$scope', 'Postman',
 	$scope.postmen = Postman.query();
  }]);
 
+
 parcelControllers.controller('CreatePostmanFormCtrl', ['$scope', '$window', 'Parcel',
  function($scope, $window, Parcel) {
 	 $scope.submit = function() {
@@ -38,8 +39,7 @@ parcelControllers.controller('UpdatePostmanFormCtrl', ['$scope', '$routeParams',
 		 }
 	 }
  }]);
- 
- 
+
 parcelControllers.controller('ParcelOrderListCtrl', ['$scope', 'Parcelorder',
  function($scope, Parcelorder) {
 $scope.parcelorders = Parcelorder.query();

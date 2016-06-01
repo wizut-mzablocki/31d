@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@AppBundle/Resources/config/config.yml" }
     - { resource: "@AppBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -11,7 +12,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -67,6 +68,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
 fos_rest:
     serializer:
         serialize_null: true
@@ -93,7 +95,8 @@ fos_rest:
         rules:
             - { path: '^/', priorities: ['html','json', 'xml'], fallback_format: html, prefer_extension: true }
     routing_loader:
-        default_format: ~
+        default_format: json
+-       include_format: false 
     exception:
         codes:
             'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
@@ -101,7 +104,6 @@ fos_rest:
             'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
     disable_csrf_role: ROLE_API
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\Postman
 assetic:
