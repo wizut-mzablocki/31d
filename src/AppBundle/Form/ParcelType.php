@@ -17,9 +17,8 @@ class ParcelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('notes', TextAreaType::class)
             ->add('weight', NumberType::class)
-            
+            ->add('note', TextAreaType::class)
         ;
     }
     

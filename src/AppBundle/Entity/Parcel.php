@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Model\ParcelInterface;
 
 /**
  * Parcel
@@ -11,7 +10,7 @@ use AppBundle\Model\ParcelInterface;
  * @ORM\Table(name="parcel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ParcelRepository")
  */
-class Parcel implements ParcelInterface
+class Parcel
 {
     /**
      * @var int
@@ -21,28 +20,22 @@ class Parcel implements ParcelInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="weight", type="float", length=4)
+     */
+    private $weight;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Notes", type="text", nullable=true)
+     * @ORM\Column(name="note", type="text")
      */
-    private $notes;
+    private $note;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Weight", type="integer")
-     */
-    
-	private $weight;
 
-	/**
-	* @ORM\OneToOne(targetEntity="AppBundle\Entity\ParcelOrder", mappedBy="parcel")
-	*/
-	protected $parcels;
-	 
     /**
      * Get id
      *
@@ -53,33 +46,13 @@ class Parcel implements ParcelInterface
         return $this->id;
     }
 
-    
-
-
     /**
-     * Set notes
+     * Set weight
      *
-     * @param string $notes
+     * @param float $weight
      *
      * @return Parcel
      */
-    public function setNotes($notes)
-    {
-        $this->notes = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Get notes
-     *
-     * @return string
-     */
-    public function getNotes()
-    {
-        return $this->notes;
-    }
-
     public function setWeight($weight)
     {
         $this->weight = $weight;
@@ -88,37 +61,36 @@ class Parcel implements ParcelInterface
     }
 
     /**
-     * Get notes
+     * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {
         return $this->weight;
     }
 
-	
-	/**
-	 * Add parcels
-	 *
-	 * @param ParcelOrder $parcels
-	 */
-	public function addParcel(ParcelOrder $parcels)
-	{
-		$this->parcels[] = $parcels;
-	}
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Parcel
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
 
-	/**
-	 * Get parcels
-	 *
-	 * @return Doctrine\Common\Collections\Collection 
-	 */
-	public function getParcels()
-	{
-		return $this->parcels;
-	}
-	
-	
-	
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
 }
-

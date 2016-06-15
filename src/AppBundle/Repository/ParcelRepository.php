@@ -1,9 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityRepository;
-use AppBundle\Model\ParcelInterface;
+
 /**
  * ParcelRepository
  *
@@ -12,15 +10,4 @@ use AppBundle\Model\ParcelInterface;
  */
 class ParcelRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function delete(ParcelInterface $parcel) {
-		$em = $this->getEntityManager();
-		$em->remove($parcel);
-		$em->flush();
-	}
-	
-	public function save(ParcelInterface $parcel) {
-		$em = $this->getEntityManager();
-		$em->persist($parcel);
-		$em->flush();
-	}
 }
