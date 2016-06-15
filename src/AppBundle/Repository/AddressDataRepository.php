@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class AddressDataRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function delete(AddressDataInterface $address) {
+		$em = $this->getEntityManager();
+		$em->remove($address);
+		$em->flush();
+	}
+	
+	public function save(AddressDataInterface $address) {
+		$em = $this->getEntityManager();
+		$em->persist($address);
+		$em->flush();
+	}
 }
