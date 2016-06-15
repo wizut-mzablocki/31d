@@ -7,7 +7,7 @@
  <th>tracking</th>
  <th>notes</th>
  </tr>
- <tr ng-repeat="parcelorder in parcelorders" ng-redirect-to="#parcelorder/edit/{{parcelorder.id}}">
+ <tr ng-repeat="parcelorder in parcelorders" ng-redirect-to="#edit/{{parcelorder.id}}">
  <td>{{parcelorder.sender.first_name}} {{parcelorder.sender.last_name}}</td>
  <td>{{parcelorder.receiver.first_name}} {{parcelorder.receiver.last_name}}</td>
  <td>{{parcelorder.tracking}}</td>
@@ -15,4 +15,4 @@
  </li>
 </ul>
 </table>
-<br/><input type="button" ng-redirect-to="#/parcelorder/new" value="Create ParcelOrder" />
+<br/><input type="button" ng-redirect-to="#new" value="Create ParcelOrder" />

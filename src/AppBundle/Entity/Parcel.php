@@ -26,7 +26,7 @@ class Parcel implements ParcelInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="notes", type="text", nullable=true)
+     * @ORM\Column(name="Notes", type="text", nullable=true)
      */
     private $notes;
 
