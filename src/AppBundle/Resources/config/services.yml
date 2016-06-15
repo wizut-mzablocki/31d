@@ -1,6 +1,6 @@
 parameters:
-    parcel.class: AppBundle\Entity\Parcel
-    parcelorder.class: AppBundle\Entity\ParcelOrder
+    parcel_rest.parcel.class: AppBundle\Entity\Parcel
+    parcelorder_rest.parcel.class: AppBundle\Entity\ParcelOrder
     addessdata.class: AppBundle\Entity\AddressData
 
 services:
@@ -10,12 +10,12 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
-    parcel_form.handler:
+    parcel_rest.parcel_form.handler:
         class: AppBundle\Handler\ParcelFormHandler
-        arguments: ['@doctrine.orm.entity_manager', %parcel.class%, '@form.factory', 'AppBundle\Form\ParcelType']
-    parcelorder_form.handler:
+        arguments:   ['@doctrine.orm.entity_manager',   %parcel_rest.parcel.class%, '@form.factory', 'AppBundle\Form\ParcelType']
+    parcelorder_rest.parcel_order_form.handler:
         class: AppBundle\Handler\ParcelOrderFormHandler
-        arguments: ['@doctrine.orm.entity_manager', %parcelorder.class%, '@form.factory', 'AppBundle\Form\ParcelOrderType']
+        arguments:   ['@doctrine.orm.entity_manager',   %parcelorder_rest.parcel.class%, '@form.factory', 'AppBundle\Form\ParcelOrderType']
     addessdata_form.handler:
         class: AppBundle\Handler\AddressDataFormHandler
         arguments: ['@doctrine.orm.entity_manager', %addessdata.class%, '@form.factory', 'AppBundle\Form\AddressDataType']

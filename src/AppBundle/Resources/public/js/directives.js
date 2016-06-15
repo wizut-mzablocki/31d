@@ -2,10 +2,10 @@
 	
 /* Directives */
 
-var parcelDirectives = angular.module('mobilepostDirectives', []);
+var directives = angular.module('mobilepostDirectives', []);
 
 
-parcelDirectives.directive('ngRedirectTo',['$window', function($window) {
+directives.directive('ngRedirectTo',['$window', function($window) {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attributes) {
@@ -15,4 +15,3 @@ parcelDirectives.directive('ngRedirectTo',['$window', function($window) {
 		}
 	}
 }]);
-

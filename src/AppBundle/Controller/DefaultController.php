@@ -11,10 +11,11 @@ class DefaultController extends Controller
     /**
      * @Route("/mobilepost", name="mobilepost")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:MobilePost:index.html.twig');
+		
+
+        return $this->render('AppBundle:Default:index.html.twig');
     }
     
     /**

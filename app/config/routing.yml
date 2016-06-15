@@ -8,3 +8,15 @@ app_server:
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+pai_parcel:
+    type: rest
+    prefix: /api
+    resource: "@AppBundle/Resources/config/routing.yml"
+pai_parcel_order:
+    type: rest
+    prefix: /po
+    resource: "@AppBundle/Resources/config/routing.yml"
+parcelorder_angular:
+    resource: "@AppBundle/Controller"
+    type: annotation

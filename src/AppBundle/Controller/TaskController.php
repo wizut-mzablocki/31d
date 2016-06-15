@@ -12,11 +12,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class TaskController extends FOSRestController
 {
 	public function getTaskAction($id) {
-        return $this->getDoctrine()->getRepository('AppBundle:Parcel')->find($id);
+        $data = $this->getDoctrine()->getRepository('AppBundle:Parcel')->find($id);
+        $view = $this->view($data);
+        return $this->handleView($view);
     }
 	
     public function getTasksAction() {
-        return $this->getDoctrine()->getRepository('AppBundle:Parcel')->findAll();
+        $data = $this->getDoctrine()->getRepository('AppBundle:Parcel')->findAll();
+        $view = $this->view($data);
+        return $this->handleView($view);
     }
 	
 	public function postTaskAction(Request $request) {		

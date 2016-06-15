@@ -2,16 +2,15 @@
 	
 /* Controllers */
 
-var parcelControllers = angular.module('mobilepostControllers', []);
-var taskControllers = angular.module('taskControllers', []);
+var controllers = angular.module('mobilepostControllers', []);
 
-parcelControllers.controller('PostmanListCtrl', ['$scope', 'Postman',
+controllers.controller('PostmanListCtrl', ['$scope', 'Postman',
  function($scope, Postman) {
 	$scope.postmen = Postman.query();
  }]);
 
 
-parcelControllers.controller('CreatePostmanFormCtrl', ['$scope', '$window', 'Parcel',
+controllers.controller('CreatePostmanFormCtrl', ['$scope', '$window', 'Parcel',
  function($scope, $window, Parcel) {
 	 $scope.submit = function() {
 		Parcel.save($scope.parcel, function() {
@@ -20,7 +19,7 @@ parcelControllers.controller('CreatePostmanFormCtrl', ['$scope', '$window', 'Par
 	 };
  }]);
 
-parcelControllers.controller('UpdatePostmanFormCtrl', ['$scope', '$routeParams', 'Parcel', '$window',
+controllers.controller('UpdatePostmanFormCtrl', ['$scope', '$routeParams', 'Parcel', '$window',
  function($scope, $routeParams, Parcel, $window) {
 	 $scope.parcel = Parcel.get({parcelId: $routeParams.parcelId});
 	 
@@ -40,7 +39,39 @@ parcelControllers.controller('UpdatePostmanFormCtrl', ['$scope', '$routeParams',
 	 }
  }]);
  
- taskControllers.controller('TaskListCtrl', ['$scope', 'Task',
+controllers.controller('TaskListCtrl', ['$scope', 'Task',
     function($scope, Task){
         $scope.tasks = Task.query();
-    }]);
+	}]);
+
+controllers.controller('ParcelOrderListCtrl', ['$scope', 'Parcelorder',
+ function($scope, Parcelorder) {
+		$scope.parcelorders = Parcelorder.query();
+	}]);
+
+controllers.controller('CreateParcelorderFormCtrl', ['$scope', '$window',
+	'Parcelorder', function($scope, $window, Parcelorder) {
+		$scope.submit = function() {
+			Parcelorder.save($scope.parcelorder, function() {
+				$window.location.href = '#';
+			});
+		};
+}]);
+
+controllers.controller('UpdateParcelorderFormCtrl', ['$scope', '$routeParams',
+	'$window', 'Parcelorder', function($scope, $routeParams, $window, Parcelorder) {
+		$scope.parcelorders = Parcelorder.get({parcelorderId: $routeParams.parcelorderId});
+		$scope.submit = function() {
+			Parcelorder.update({parcelorderId: $routeParams.parcelorderId}, $scope.parcelorders,
+			function() {$window.location.href = '#';}); } 
+			
+		$scope.delete = function() {
+			var answer = confirm("Are you sure you want to delete this order?");
+			if (answer) {
+				Parcelorder.delete({parcelorderId: $routeParams.parcelorderId}, function() {
+					$window.location.href = "#";
+				});
+			
+			}
+		}
+}]);   
