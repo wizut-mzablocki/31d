@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Model\ParcelInterface;
 
 /**
  * Parcel
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="parcel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ParcelRepository")
  */
-class Parcel
+class Parcel implements ParcelInterface
 {
     /**
      * @var int
@@ -20,22 +21,28 @@ class Parcel
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="weight", type="float", length=4)
-     */
-    private $weight;
+    
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="notes", type="text", nullable=true)
      */
-    private $note;
+    private $notes;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Weight", type="integer")
+     */
+    
+	private $weight;
 
+	/**
+	* @ORM\OneToOne(targetEntity="AppBundle\Entity\ParcelOrder", mappedBy="parcel")
+	*/
+	protected $parcels;
+	 
     /**
      * Get id
      *
@@ -46,13 +53,33 @@ class Parcel
         return $this->id;
     }
 
+    
+
+
     /**
-     * Set weight
+     * Set notes
      *
-     * @param float $weight
+     * @param string $notes
      *
      * @return Parcel
      */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
     public function setWeight($weight)
     {
         $this->weight = $weight;
@@ -61,36 +88,37 @@ class Parcel
     }
 
     /**
-     * Get weight
+     * Get notes
      *
-     * @return float
+     * @return string
      */
     public function getWeight()
     {
         return $this->weight;
     }
 
-    /**
-     * Set note
-     *
-     * @param string $note
-     *
-     * @return Parcel
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
+	
+	/**
+	 * Add parcels
+	 *
+	 * @param ParcelOrder $parcels
+	 */
+	public function addParcel(ParcelOrder $parcels)
+	{
+		$this->parcels[] = $parcels;
+	}
 
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return string
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
+	/**
+	 * Get parcels
+	 *
+	 * @return Doctrine\Common\Collections\Collection 
+	 */
+	public function getParcels()
+	{
+		return $this->parcels;
+	}
+	
+	
+	
 }
+

@@ -1,14 +1,14 @@
 AppBundle\Entity\Parcel:
     properties:
         weight:
-             -NotBlank: ~
-             -NotNull: ~
-             -Range:
+             - NotBlank: ~
+             - NotNull: ~
+             - Range:
                  min: 0.01
                  max: 9999
                  minMessage: 'The weight value must be greater then 0.01'
                  maxMessage: 'The weight value must be smaller or qual to 9999'
-        note:
+        notes:
             - Length:
                 min: 0
                 max: 600
@@ -19,14 +19,26 @@ AppBundle\Entity\ParcelOrder:
         tracking:
             - Choice: [true, false]
         parcel:
-            -NotBlank: ~
-            -NotNull: ~
+            - NotBlank: ~
+            - NotNull: ~
         sender:
-            -NotBlank: ~
-            -NotNull: ~
+            - NotBlank: ~
+            - NotNull: ~
         receiver:
-            -NotBlank: ~
-            -NotNull: ~
+            - NotBlank: ~
+            - NotNull: ~
+        notes:    
+            - Length: 
+                min: 1 
+                max: 99999
+                maxMessage: "Your note must be smaller or equal to 99999 signs" 
+        parcelOrderHash:    
+            - NotBlank: ~
+            - NotNull: ~
+            - Range: 
+                min: 1 
+                max: 99999
+                maxMessage: "The idSender value must be smaller or equal to 99999"
         
 AppBundle\Entity\AddresData:
     properties:

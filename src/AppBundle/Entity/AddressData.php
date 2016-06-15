@@ -70,6 +70,11 @@ class AddressData
      */
     private $email;
 
+	
+	/**
+	* @ORM\OneToOne(targetEntity="AppBundle\Entity\ParcelOrder", mappedBy="sender",mappedBy="receiver")
+	*/
+	protected $parcelorders;
 
     /**
      * Get id
@@ -91,6 +96,7 @@ class AddressData
     public function setFirstName($firstName)
     {
         $this->first_name = $firstName;
+
         return $this;
     }
 
@@ -247,4 +253,25 @@ class AddressData
     {
         return $this->email;
     }
+	
+	/**
+	 * Add parcelorders
+	 *
+	 * @param ParcelOrder $parcels
+	 */
+	public function addParcelorder(ParcelOrder $parcels)
+	{
+		$this->parcelorders[] = $parcels;
+	}
+
+	/**
+	 * Get parcelorders
+	 *
+	 * @return Doctrine\Common\Collections\Collection 
+	 */
+	public function getParcelorders()
+	{
+		return $this->parcelorders;
+	}
 }
+

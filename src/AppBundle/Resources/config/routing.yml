@@ -1,11 +1,25 @@
 postmen:
-    type:     rest
+    type: rest
     resource: AppBundle\Controller\PostmenController
 
 parcel_order:
     type: rest
     resource: AppBundle\Controller\ParcelOrderController
 
+task:
+    type: rest
+    resource: AppBundle\Controller\TaskController
+
 mobilepost:
     type: annotation
     resource: AppBundle\Controller\DefaultController
+pai_parcel_Parcel:
+    type: rest
+    resource: AppBundle\Controller\ParcelController
+pai_parcelorder_Parcel:
+    type: rest
+    resource: AppBundle\Controller\ParcelOrderController
+    
+task:
+    type: rest
+    resource: AppBundle\Controller\TaskController
