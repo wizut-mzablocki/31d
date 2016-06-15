@@ -13,10 +13,6 @@ use AppBundle\Model\ParcelOrderInterface;
  */
 class ParcelOrderRepository extends \Doctrine\ORM\EntityRepository
 {
-
-    public function find($id) {
-		return $this->getEntityManager()->createQuery('SELECT p FROM AppBundle:ParcelOrder p WHERE p.id = ' . $id)->getResult();
-	}
 	
 	
 	public function delete(ParcelOrderInterface $parcelorder) {
@@ -29,6 +25,5 @@ class ParcelOrderRepository extends \Doctrine\ORM\EntityRepository
 		$em = $this->getEntityManager();
 		$em->persist($parcelorder);
 		$em->flush();
-
 	}
 }

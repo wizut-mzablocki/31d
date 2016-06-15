@@ -17,8 +17,8 @@ class DefaultController extends Controller
 
         return $this->render('AppBundle:Default:index.html.twig');
     }
-    
-    /**
+	
+	/**
      * @Route("/postmanpanel", name="postman_panel")
      */
 	public function postmanpanelAction()
@@ -26,4 +26,3 @@ class DefaultController extends Controller
 		return $this->render('AppBundle:MobilePost:index.html.twig');
 	}
 }
-

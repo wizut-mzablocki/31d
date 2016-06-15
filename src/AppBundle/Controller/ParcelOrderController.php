@@ -43,7 +43,7 @@ class ParcelOrderController extends FOSRestController
 				return array('form' => $exception->getForm());
 			}
 	}
-    
+	
 	public function putParcelorderAction(Request $request, $id)
     {
         try {
@@ -69,13 +69,6 @@ class ParcelOrderController extends FOSRestController
             return $exception->getForm();
         }
     }
-    
-    
-    
-	/**
-	*deleteParcelorderAction - implemented by Krzysztof Młynarski
-	*
-	*/
 	public function deleteParcelorderAction(Request $request, $id)
     {
         $parcel = getParcelAction($id);
@@ -90,4 +83,3 @@ class ParcelOrderController extends FOSRestController
         }
     }
 }
-
