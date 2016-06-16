@@ -1,12 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mobilePost">
     <head>
+	     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+		<script>
+		 angular.module('mobilePost',['postman']);
+            angular.module('postman',[]);
+            angular.module('postman').controller('postmenController', ['$scope', '$http', function($scope, $http){
+			
+
+			
+			
+				var http_request = new XMLHttpRequest();
+				var url = "http://localhost:8000/po/postmens/{{id}}.json"; // adres z danymi w formacie JSON
+
+				 // pobierz dane w formacie JSON z serwera\
+				 http_request.onreadystatechange = handle_json;
+				 http_request.open("GET", url);
+				 http_request.send(null);
+				 function handle_json() {
+						if (http_request.readyState == 4) {
+								if (http_request.status == 200) {
+										var json_data = http_request.responseText; // pobranie tekstu
+										var the_object = eval("("+json_data+")");  // zamiana tekstu na obiekt JSON
+										$scope.$apply(function(){
+											$scope.username=the_object["username"];
+											$scope.paswd=the_object["password"];
+											$scope.phone=the_object["phone"];
+											$scope.email=the_object["email"];
+											$scope.city=the_object["city"];
+										});
+								} else {
+										alert('Wystąpił problem z wybranym adresem URL.');
+								}
+								http_request = null;
+						}
+				 }
+
+				$scope.submit = function(){
+                    var serialized = $("#postmanForm").serialize();
+                    console.log(serialized);
+                    var data = "";
+                    data+="postmanform%5Busername%5D="+$scope.username;
+                    data+="&postmanform%5Bpassword%5D="+$scope.paswd;
+                    data+="&postmanform%5Bphone%5D="+$scope.phone;
+                    data+="&postmanform%5Bemail%5D="+$scope.email;
+                    data+="&postmanform%5Bcity%5D="+$scope.city;
+                    console.log(data);
+                    var config = { headers : { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' }};
+                    $http.post("{{ path("postman/put/id", {"id":id}) }}", data, config).then(function(response){
+                        console.log(response);
+                        $scope.result = 1;
+                    }, function(response){
+                        console.log(response);
+                        $scope.result = -1;
+                    });
+                }
+				
+			//  
+            }]);
+		</script>
+	
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
