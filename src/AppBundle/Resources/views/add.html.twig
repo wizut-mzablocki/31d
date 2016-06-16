@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div ng-controller="postmenController" id="postmanform">
+ <form ng-submit="submit()" id="postmanForm" name="postmanform" method="post">
+ <div>
+ <div>
+ <label for="postmanform_username" class="required">Username</label>
+ <input ng-model="username" type="text" id="postmanform_username" name="postmanform[username]" required="required" maxlength="255" pattern=".{2,}" />
+ </div>
+ <div>
+ <label for="postmanform_password" class="required">Password</label>
+ <input ng-model="paswd" type="text" id="postmanform_password" name="postmanform[password]" required="required" />
+ </div>
+ <div>
+ <label for="postmanform_phone" class="required">Phone</label>
+ <input ng-model="phone" type="text" id="postmanform_phone" name="postmanform[phone]" pattern="^[0-9]{9,11}$" required="required" maxlength="11" />
+ </div>
+ <div>
+ <label for="postmanform_email" class="required">Email</label>
+ <input ng-model="email" type="email" id="postmanform_email" name="postmanform[email]" required="required" maxlength="254" pattern=".{2,}" />
+ </div>
+ <div><label for="postmanform_city" class="required">City</label>
+ <input ng-model="city" type="text" id="postmanform_city" name="postmanform[city]" required="required" maxlength="255" />
+ </div>
+ <div>
+ <button type="submit" id="postmanform_save" name="postmanform[save]">Zapisz</button></div>
+ </div>
+ </form>
+ </div>
+{% endblock %}
