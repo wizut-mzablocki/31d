@@ -19,7 +19,7 @@ pai_parcel_Parcel:
 pai_parcelorder_Parcel:
     type: rest
     resource: AppBundle\Controller\ParcelOrderController
-    
-task:
+
+location_data:
     type: rest
-    resource: AppBundle\Controller\TaskController
+    resource: 'AppBundle\Controller\LocationDataController'
