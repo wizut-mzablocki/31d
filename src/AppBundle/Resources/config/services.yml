@@ -2,6 +2,7 @@ parameters:
     parcel_rest.parcel.class: AppBundle\Entity\Parcel
     parcelorder_rest.parcel.class: AppBundle\Entity\ParcelOrder
     addessdata.class: AppBundle\Entity\AddressData
+    postman.class: AppBundle\Entity\Postman
 
 services:
     parcelorder_emailsender.handler:
@@ -19,3 +20,6 @@ services:
     addessdata_form.handler:
         class: AppBundle\Handler\AddressDataFormHandler
         arguments: ['@doctrine.orm.entity_manager', %addessdata.class%, '@form.factory', 'AppBundle\Form\AddressDataType']
+    postman_form.handler:
+        class: AppBundle\Handler\PostmanFormHandler
+        rguments: ['@doctrine.orm.entity_manager', %parcel.class%, '@form.factory', 'AppBundle\Form\PostmanType']

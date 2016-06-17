@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Model\ParcelInterface;
 
 /**
  * PostmanRepository
@@ -10,4 +11,25 @@ namespace AppBundle\Repository;
  */
 class PostmanRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function delete(PostmanInterface $postman) {
+        $em = $this->getEntityManager();
+        $em->remove($postman);
+        $em->flush();
+    }
+    public function save(PostmanInterface $postman) {
+        $em = $this->getEntityManager();
+        $em->persist($postman);
+        $em->flush();
+    }
+    
+    public function edit($request, $postman)
+    {
+        //$form = $this->buildForm(PostmanType::class, $request);
+        $postman->setFirstName($request->request->get('first_name'));
+        $postman->setLastName($request->request->get('last_name'));
+        $postman->setPhone($request->request->get('phone'));
+        $postman->setEmail($request->request->get('email'));
+        $postman->setCity($request->request->get('city'));
+        return $postman;
+    }
 }
