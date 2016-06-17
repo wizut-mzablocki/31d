@@ -7,7 +7,7 @@ var services = angular.module('mobilepostServices', ['ngResource']);
 
 services.factory('Postman', ['$resource', 
     function($resource){
-    		return $resource('http://localhost:8000/postmen/:parcelId.json', {}, {
+    		return $resource('http://localhost:8000/po/postmen/:postmanId.json', {}, {
       			query: {method:'GET', isArray:true, headers: {'Accept': 'application/json'}},
       			get: {method:'GET', isArray:false, headers: {'Accept': 'application/json'}},
       			save: {method:'POST', headers: {'Accept': 'application/json'}},
